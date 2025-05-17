@@ -1,9 +1,13 @@
 package com.example.butorbolt;
 
+import androidx.annotation.RequiresPermission;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import android.Manifest;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.ContentProviderOperation;
 import android.content.Intent;
 import android.content.OperationApplicationException;
@@ -15,6 +19,7 @@ import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -46,6 +51,7 @@ public class ShopListActivity extends AppCompatActivity {
             Log.d(LOG_TAG, "Unauthenticated user!");
             finish();
         }
+        setAlarm();
 
         //mFirestore = FirebaseFirestore.getInstance();
         //mItems = mFirestore.collection("Items");
@@ -169,6 +175,28 @@ public class ShopListActivity extends AppCompatActivity {
         } else {
             super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         }
+    }
+
+
+    // ALARM
+    private void setAlarm() {
+
+        Intent intent = new Intent(this, MyBroadcastReceiver.class);
+
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(
+                this, 123, intent, PendingIntent.FLAG_IMMUTABLE
+        );
+
+
+        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+        alarmManager.setExactAndAllowWhileIdle(
+                AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + (10*1000), pendingIntent
+        );
+
+
+        //To Cancel the alarm
+        //alarmManager.cancel(pendingIntent);
+
     }
 
 

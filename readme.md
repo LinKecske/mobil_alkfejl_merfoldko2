@@ -5,4 +5,5 @@
 - ShopListActivity-ben onAddContactClicked metódus és az ahhoz tartozó metódusok -> csinál egy Tech support névjegyet
 ## Notifications:
 - Notification OK -> termek1Activity.java -> amikor a képet letöltöd. 
+- Alarm manager OK -> ShopListActivity-be való belépés után 30 másodperccel megjelenik egy értesítés nehogy a vásárló elfelejtsen vásárolni. 
 
