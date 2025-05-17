@@ -1,10 +1,14 @@
 package com.example.butorbolt;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.ContentValues;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -44,6 +48,7 @@ public class Termek1Activity extends AppCompatActivity {
             try {
                 OutputStream outputStream = context.getContentResolver().openOutputStream(uri);
                 if (outputStream != null) {
+                    showNotification();
                     bitmap.compress(Bitmap.CompressFormat.JPEG, 90, outputStream);
                     outputStream.close();
                     Toast.makeText(context, "Kép elmentve a galériába!", Toast.LENGTH_SHORT).show();
@@ -77,5 +82,31 @@ public class Termek1Activity extends AppCompatActivity {
                 Toast.makeText(this, "Engedély szükséges a mentéshez!", Toast.LENGTH_SHORT).show();
             }
         }
+    }
+
+    // NOTIFICATION
+    public void showNotification() {
+        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        String channelId = "my_channel_id";
+
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            NotificationChannel channel = new NotificationChannel(
+                    channelId,
+                    "My Channel",
+                    NotificationManager.IMPORTANCE_DEFAULT
+            );
+            notificationManager.createNotificationChannel(channel);
+        }
+
+        Notification notification = null;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            notification = new Notification.Builder(this, channelId)
+                    .setContentTitle("Üzenet")
+                    .setContentText("Ez egy egyszerű értesítés.")
+                    .setSmallIcon(R.drawable.notification) // saját ikon
+                    .build();
+        }
+
+        notificationManager.notify(1, notification);
     }
 }

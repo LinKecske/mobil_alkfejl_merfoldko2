@@ -47,5 +47,7 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:33.13.0"))
     implementation("com.google.android.gms:play-services-maps:18.1.0")
     implementation("com.google.android.gms:play-services-location:21.0.1")
+    //FERIIIII
+    implementation("com.google.firebase:firebase-firestore-ktx")
     //IDAIG
 }
