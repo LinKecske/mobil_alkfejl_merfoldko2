@@ -8,8 +8,8 @@
     <item
         android:id="@+id/kosar"
         android:title="Kosár"
-        android:icon="@drawable/chart"
-        android:onClick="home"/>
+        android:icon="@drawable/home"
+        android:onClick="onAddContactClicked"/>
     <item
         android:id="@+id/exit"
         android:title="Kijelentkezés"
