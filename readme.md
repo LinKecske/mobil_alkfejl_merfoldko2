@@ -1,0 +1,2 @@
+- Lifecycle hook: ShopListActivity osztályban az onDestroy()-ban: amikor kilépünk a mainActivity-be, akkor kiír egy üzenetet. 
+- 2 android erőforrás, amihez premission kell. 

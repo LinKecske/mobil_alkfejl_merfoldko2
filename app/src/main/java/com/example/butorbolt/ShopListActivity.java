@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -45,7 +46,37 @@ public class ShopListActivity extends AppCompatActivity {
     }
 
     public void termek1(View view) {
+        Intent intent = new Intent(this, Termek1Activity.class);
+        startActivity(intent);
     }
+
+    @Override
+    protected void onStart(){
+        super.onStart();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        FirebaseAuth.getInstance().signOut();
+        Toast.makeText(this, "Kijelentkeztetve!", Toast.LENGTH_SHORT).show();
+    }
+
 
 
 }
