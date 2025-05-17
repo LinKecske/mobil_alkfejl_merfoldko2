@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "12914641620",
+    "project_id": "butor-bolt",
+    "storage_bucket": "butor-bolt.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:12914641620:android:534b91bc296176ad800941",
+        "android_client_info": {
+          "package_name": "com.example.butorbolt"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBkm4yX77mm-qzTxmT6GOHVOspFC_2AnOk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

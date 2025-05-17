@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/home"
+        android:title="Főoldal"
+        android:icon="@drawable/home"
+        android:onClick="home"/>
+    <item
+        android:id="@+id/kosar"
+        android:title="Kosár"
+        android:icon="@drawable/chart"
+        android:onClick="home"/>
+    <item
+        android:id="@+id/exit"
+        android:title="Kijelentkezés"
+        android:icon="@drawable/exit"
+        android:onClick="exit"/>
+</menu>
