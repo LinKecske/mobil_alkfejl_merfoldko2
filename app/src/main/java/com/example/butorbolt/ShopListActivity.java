@@ -8,6 +8,7 @@ import android.content.ContentProviderOperation;
 import android.content.Intent;
 import android.content.OperationApplicationException;
 import android.content.pm.PackageManager;
+import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.os.RemoteException;
 import android.provider.ContactsContract;
@@ -18,6 +19,8 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 
@@ -26,6 +29,8 @@ public class ShopListActivity extends AppCompatActivity {
     private static final int PERMISSION_REQUEST_WRITE_CONTACTS = 101;
     private FirebaseUser user;
     private FirebaseAuth mAuth;
+    private FirebaseFirestore mFirestore;
+    private CollectionReference mItems;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +46,22 @@ public class ShopListActivity extends AppCompatActivity {
             Log.d(LOG_TAG, "Unauthenticated user!");
             finish();
         }
+
+        //mFirestore = FirebaseFirestore.getInstance();
+        //mItems = mFirestore.collection("Items");
     }
+
+    /*private void initializeData(){
+        String[] itemsList = getResources().getStringArray(R.array.shopping_item_names);
+        String[] itemsInfo = getResources().getStringArray(R.array.shopping_item_names);
+        String[] itemsPrice = getResources().getStringArray(R.array.shopping_item_price);
+        TypedArray itemsImageResources = getResources().obtainTypedArray(R.array.shopping_item_price);
+
+        for (int i = 0; i < itemsList.length; i++){
+            mItems.add(new Item(itemsList[i], itemsInfo[i], itemsPrice[i], itemsImageResources.getResourceId(i, 0)));
+        }
+
+    }*/
 
 
     public void exit(MenuItem item) {

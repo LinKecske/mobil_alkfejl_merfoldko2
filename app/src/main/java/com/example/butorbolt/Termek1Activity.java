@@ -12,8 +12,13 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.IOException;
@@ -23,7 +28,10 @@ import java.io.OutputStream;
 import android.Manifest;
 import android.content.pm.PackageManager;
 import androidx.core.app.ActivityCompat;
+import androidx.core.app.NotificationCompat;
 import androidx.core.content.ContextCompat;
+
+import com.google.android.material.button.MaterialButton;
 
 
 public class Termek1Activity extends AppCompatActivity {
@@ -35,6 +43,35 @@ public class Termek1Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_termek1);
         exampleBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.szekreny1);
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "test")
+                .setSmallIcon(R.drawable.notification)
+                .setContentTitle(getString(R.string.app_name))
+                .setContentText("Kép sikeresen letöltve")
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+
+        NotificationManager notificationManager = getSystemService(NotificationManager.class);
+
+        ImageView postNotification = findViewById(R.id.imageView);
+        postNotification.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU && ActivityCompat.checkSelfPermission(Termek1Activity.this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+                    activityResultLauncher.launch(Manifest.permission.POST_NOTIFICATIONS);
+                } else {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                        CharSequence name = getString(R.string.app_name);
+                        String description = "Kép sikeresen letöltve.";
+                        int importance = NotificationManager.IMPORTANCE_DEFAULT;
+                        NotificationChannel channel = new NotificationChannel("test", name, importance);
+                        channel.setDescription(description);
+                        notificationManager.createNotificationChannel(channel);
+
+                        notificationManager.notify(10, builder.build());
+                    }
+                }
+            }
+        });
     }
 
     public void saveImageToGallery(Bitmap bitmap, Context context) {
@@ -109,4 +146,15 @@ public class Termek1Activity extends AppCompatActivity {
 
         notificationManager.notify(1, notification);
     }
+
+    private final ActivityResultLauncher<String> activityResultLauncher = registerForActivityResult(new ActivityResultContracts.RequestPermission(), new ActivityResultCallback<Boolean>() {
+        @Override
+        public void onActivityResult(Boolean o) {
+            if (o) {
+                Toast.makeText(Termek1Activity.this, "Post notification permission granted", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(Termek1Activity.this, "Post notification permission not granted", Toast.LENGTH_SHORT).show();
+            }
+        }
+    });
 }
