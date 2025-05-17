@@ -3,6 +3,7 @@ package com.example.butorbolt;
 import android.content.ContentValues;
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -14,12 +15,22 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.io.IOException;
 import java.io.OutputStream;
 
+// SAJAT
+import android.Manifest;
+import android.content.pm.PackageManager;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
+
 public class Termek1Activity extends AppCompatActivity {
+    private static final int PERMISSION_REQUEST_CODE = 100;
+    private Bitmap exampleBitmap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_termek1);
+        exampleBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.szekreny1);
     }
 
     public void saveImageToGallery(Bitmap bitmap, Context context) {
@@ -40,6 +51,30 @@ public class Termek1Activity extends AppCompatActivity {
             } catch (IOException e) {
                 e.printStackTrace();
                 Toast.makeText(context, "Hiba a mentés során!", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    public void mentesGombClicked(android.view.View view) {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_MEDIA_IMAGES)
+                != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.READ_MEDIA_IMAGES},
+                    PERMISSION_REQUEST_CODE);
+        } else {
+            saveImageToGallery(exampleBitmap, this);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if (requestCode == PERMISSION_REQUEST_CODE) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                saveImageToGallery(exampleBitmap, this);
+            } else {
+                Toast.makeText(this, "Engedély szükséges a mentéshez!", Toast.LENGTH_SHORT).show();
             }
         }
     }
