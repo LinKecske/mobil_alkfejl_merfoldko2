@@ -3,7 +3,7 @@
 - Alapból automatikusan beléptet, de lehet hogy várni kell egy kicsit hogy regisztráljon. Ha várakozás után sem léptet be, akkor lehet hogy regisztrált már, lépj vissza a bejelentkező oldalra és próbálj bejelentkezni. 
 - Ha még így sem megy, akkor próbálj bejelentkezni a default@gmail.com-al. Jelszó: 123456
 ## Adatmodell definiálása:
-- Item class
+- Item class-ban
 ## Layout típusok:
 - Constraint layout (kb mindenhol)
 - Relative layout (activity_register.xml)
