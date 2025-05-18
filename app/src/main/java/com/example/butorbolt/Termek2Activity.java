@@ -43,7 +43,7 @@ public class Termek2Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_termek1);
-        exampleBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.szekreny1);
+        exampleBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.szekreny2);
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "test")
                 .setSmallIcon(R.drawable.notification)

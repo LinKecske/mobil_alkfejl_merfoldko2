@@ -23,7 +23,7 @@
                 android:id="@+id/imageView"
                 android:layout_width="185dp"
                 android:layout_height="218dp"
-                android:src="@drawable/szekreny1"
+                android:src="@drawable/szekreny2"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.075"
@@ -37,10 +37,11 @@
                 android:id="@+id/textView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="60dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="28dp"
-                android:text="Bútor 1"
+                android:text="Ferenc szekrény"
                 android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imageView"
                 app:layout_constraintTop_toTopOf="@+id/imageView" />
 
@@ -50,7 +51,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="36dp"
-                android:text="Fedezd fel az új kedvenc szekrényed! Stílus, praktikum és tágas tárolóhely egyben – ez a szekrény tökéletes választás otthonod bármely helyiségébe. Letisztult design, masszív kivitel, és minden apróságnak meglesz a maga helye. Rend és elegancia egy mozdulattal!"
+                android:text="Több mint egy szekrény – ez a stílus új otthona! Modern megjelenés, okos belső elrendezés és kompromisszummentes minőség. Legyen szó ruhákról, könyvekről vagy titkos kincseidről – ez a szekrény mindennek helyet ad. Tágas. Elegáns. Elengedhetetlen."
                 app:layout_constraintStart_toStartOf="@+id/imageView"
                 app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
@@ -59,7 +60,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="28dp"
-                android:text="450 000Ft"
+                android:text="350 000Ft"
                 android:textSize="24sp"
                 app:layout_constraintStart_toStartOf="@+id/textView4"
                 app:layout_constraintTop_toBottomOf="@+id/textView4" />
