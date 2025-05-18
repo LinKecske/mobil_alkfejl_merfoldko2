@@ -12,6 +12,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -157,4 +158,9 @@ public class Termek1Activity extends AppCompatActivity {
             }
         }
     });
+
+    //KOSARBA
+    public void kosarba(android.view.View view) {
+        Toast.makeText(Termek1Activity.this, "Termék kosárba helyezve", Toast.LENGTH_SHORT).show();
+    }
 }

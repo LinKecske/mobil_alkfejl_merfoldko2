@@ -74,6 +74,7 @@ public class ShopListActivity extends AppCompatActivity {
         finish();
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+        Toast.makeText(this, "Kijelentkeztetve!", Toast.LENGTH_SHORT).show();
     }
 
     public void home(MenuItem item) {
@@ -109,8 +110,7 @@ public class ShopListActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        FirebaseAuth.getInstance().signOut();
-        Toast.makeText(this, "Kijelentkeztetve!", Toast.LENGTH_SHORT).show();
+
     }
 
     // TELFON
@@ -190,12 +190,8 @@ public class ShopListActivity extends AppCompatActivity {
 
         AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
         alarmManager.setExactAndAllowWhileIdle(
-                AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + (10*1000), pendingIntent
+                AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + (30*1000), pendingIntent
         );
-
-
-        //To Cancel the alarm
-        //alarmManager.cancel(pendingIntent);
 
     }
 
