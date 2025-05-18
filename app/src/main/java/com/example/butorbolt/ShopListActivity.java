@@ -87,6 +87,16 @@ public class ShopListActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void termek2(View view) {
+        Intent intent = new Intent(this, Termek2Activity.class);
+        startActivity(intent);
+    }
+
+    public void termek3(View view) {
+        Intent intent = new Intent(this, Termek3Activity.class);
+        startActivity(intent);
+    }
+
     @Override
     protected void onStart(){
         super.onStart();
