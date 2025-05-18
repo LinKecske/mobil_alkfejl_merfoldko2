@@ -19,5 +19,5 @@
 ## Komplex firestroe lekérdezések:
 - Nincs, ne keresd
 ## Szubjektív pontozás:
-- Légyszi úgy, hogy meglegyen a 27.5 pont :)
+- Légyszi úgy, hogy meglegyen legalább 27.5 pont :)
 
